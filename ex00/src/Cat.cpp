@@ -12,29 +12,31 @@
 
 #include	"../inc/Cat.hpp"
 
-Cat::Cat( void ): Animal( "Cat" )
+Cat& Cat::operator=(const Cat &other)
 {
+	std::cout << "Cat: Copy assignment operator called" << std::endl;
+	this->_type = other._type;
+	return *this;
+}
+
+Cat::Cat(const Cat &copy)
+{
+	this->_type = copy._type;
+	std::cout << "Cat: Copy constructor called" << std::endl;
+}
+
+Cat::Cat(void)
+{
+	this->_type = "Cat";
 	std::cout << "Cat: Default constructor called" << std::endl;
 }
 
-Cat::Cat( const Cat& cat ): Animal( cat )
+Cat::~Cat(void)
 {
-	std::cout << "Cat: Copy constructor called" << std::endl;	
+	std::cout << "Cat: Default destructor called" << std::endl;
 }
 
-Cat::~Cat( void )
+void Cat::makeSound(void) const
 {
-	std::cout << "Cat: Destructor called" << std::endl;
-}
-
-Cat&	Cat::operator=( const Cat& cat )
-{
-	std::cout << "Cat: Assignation operator called" << std::endl;
-	this->_type = cat._type;
-	return ( *this );
-}
-
-void	Cat::makeSound( void ) const
-{
-	std::cout << "Meeeeoooww" << std::endl;
+	std::cout << "Meow" << std::endl;
 }

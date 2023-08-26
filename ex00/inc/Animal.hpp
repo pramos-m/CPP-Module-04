@@ -28,10 +28,8 @@ class Animal
 		virtual ~Animal( void );
 		Animal&			operator=( const Animal& animal );
 		std::string		getType( void ) const;
+		void			setType(std::string type);
 		virtual void	makeSound( void ) const;
 };
-
-std::ostream&	operator<<( std::ostream& out, const Animal& animal );
-std::ostream&	operator<<( std::ostream& out, const Animal* animal );
 
 #endif

@@ -18,60 +18,41 @@
 #include	<iostream>
 #include	<iomanip>
 
-int		main()
+int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+    // Creación de instancias de las clases base y derivadas
+    const Animal* meta = new Animal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
 
-	// Printing types of Dog and Cat instances
-	std::cout << "Dog: " << j->getType() << " | Cat: " << i->getType() << std::endl;
-	i->makeSound();
-	j->makeSound();
-	// Calling makeSound() on base class Animal instance
-	meta->makeSound();
-	// Deleting dynamically allocated instances
-	delete meta;
-	delete j;
-	delete i;
+    // Imprimir los tipos de los animales
+    std::cout << "Type of j: " << j->getType() << " " << std::endl;
+    std::cout << "Type of i: " << i->getType() << " " << std::endl;
 
-	// Creating instance of derived class WrongCat
-	const WrongAnimal* a = new WrongCat();
-	// Printing type of WrongCat instance
-	std::cout << "WrongCat: " << a->getType() << std::endl;
-	// Calling makeSound() on WrongCat instance
-	a->makeSound();
-	// Creating instance of WrongCat using default constructor
-	WrongCat b;
-	// Printing type of b
-	std::cout << "WrongCat b: " << b.getType() << std::endl;
-	// Calling makeSound() on WrongCat instance b
-	b.makeSound();
-	delete a;
+    // Imprimir los sonidos
+    std::cout << "i->makeSound(): ";
+    i->makeSound();    
+    std::cout << "j->makeSound(): ";
+    j->makeSound();
+    std::cout << "meta->makeSound(): ";
+    meta->makeSound();
+    delete meta;
+    delete j;
+    delete i;
 
-	return (0);
+    // Creación de instancias de las clases base y derivadas de WrongAnimal y WrongCata
+    const WrongAnimal* a = new WrongCat(); 
+
+	// Imprimir el tipo de WrongCat
+    std::cout << "Type of a: " << a->getType() << " " << std::endl;
+    // Imprimir Sonido de WrongCat (¡error!)
+    std::cout << "a->makeSound(): ";
+    a->makeSound();
+
+    WrongCat b;
+    std::cout << "Type of b: " << b.getType() << " " << std::endl;
+    b.makeSound();
+
+    delete a;
+    return 0;
 }
-
-// int	main()
-// {
-// 	const Animal* meta = new Animal();
-// 	const Animal* j = new Dog();
-// 	const Animal* i = new Cat();
-// 	std::cout << j->getType() << " " << std::endl;
-// 	std::cout << i->getType() << " " << std::endl;
-// 	i->makeSound(); 
-// 	j->makeSound();
-// 	meta->makeSound();
-// 	delete meta;
-// 	delete j;
-// 	delete i;
-
-// 	const WrongAnimal* a = new WrongCat();
-// 	std::cout << a->getType() << " " << std::endl;
-// 	a->makeSound();
-// 	WrongCat b;
-// 	std::cout << b.getType() << " " << std::endl;
-// 	b.makeSound();
-// 	delete a;
-// 	return (0);
-// }

@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pramos-m <pramos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 09:51:49 by pramos-m          #+#    #+#             */
-/*   Updated: 2023/08/20 09:51:51 by pramos-m         ###   ########.fr       */
+/*   Created: 2023/08/20 09:45:46 by pramos-m          #+#    #+#             */
+/*   Updated: 2023/08/20 09:45:48 by pramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef __ANIMAL_H__
 # define __ANIMAL_H__
@@ -27,10 +28,8 @@ class Animal
 		virtual ~Animal( void );
 		Animal&			operator=( const Animal& animal );
 		std::string		getType( void ) const;
+		void			setType(std::string type);
 		virtual void	makeSound( void ) const;
 };
-
-std::ostream&	operator<<( std::ostream& out, const Animal& animal );
-std::ostream&	operator<<( std::ostream& out, const Animal* animal );
 
 #endif

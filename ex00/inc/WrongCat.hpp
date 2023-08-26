@@ -15,14 +15,16 @@
 
 # include	"WrongAnimal.hpp"
 
-class WrongCat: public WrongAnimal
+class WrongCat : public WrongAnimal
 {
+	protected:
+
 	public:
-		WrongCat( void );
-		WrongCat( const WrongCat& wrongCat );
-		~WrongCat( void );
-		WrongCat&	operator=( const WrongCat& wrongCat );
-		void		makeSound( void ) const;
+		WrongCat(void);
+		WrongCat(const WrongCat &copy);
+		virtual ~WrongCat(void);
+		WrongCat& operator=(const WrongCat &other);
+		void makeSound(void) const;
 };
 
 #endif

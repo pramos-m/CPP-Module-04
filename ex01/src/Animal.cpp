@@ -6,59 +6,45 @@
 /*   By: pramos-m <pramos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 09:48:39 by pramos-m          #+#    #+#             */
-/*   Updated: 2023/08/20 10:17:47 by pramos-m         ###   ########.fr       */
+/*   Updated: 2023/08/22 08:49:49 by pramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../inc/Animal.hpp"
 
-Animal::Animal( void ): _type( "Animal" )
+Animal& Animal::operator=(const Animal &other)
 {
-    std::cout << "Animal: Default constructor called" << std::endl;
+	std::cout << "Animal: Copy assignment operator called" << std::endl;
+	this->_type = other._type;
+	return *this;
 }
 
-Animal::Animal( std::string type ): _type( type )
+Animal::Animal(const Animal &copy): _type(copy._type)
 {
-    std::cout << "Animal: Copy Default constructor called" << std::endl;
+	 std::cout << "Animal: Copy constructor called" << std::endl;
 }
 
-Animal::Animal( const Animal& animal ): _type( animal._type )
+Animal::Animal(void) : _type("Non")
 {
-    _type = animal._type;
-    std::cout << "Animal: Copy constructor called" << std::endl;
+	std::cout << "Animal: Default constructor called" << std::endl;
 }
 
-Animal::~Animal( void )
+Animal::~Animal(void)
 {
-	std::cout << "Animal: Destructor called" << std::endl;
+	std::cout << "Animal: Default destructor called" << std::endl;
 }
 
-std::string	Animal::getType( void ) const
+void Animal::makeSound(void) const
 {
-	return ( this->_type );
+	std::cout << "Animal: Default sound" << std::endl;
 }
 
-void	Animal::makeSound( void ) const
+void Animal::setType(std::string type)
 {
-	std::cout << "(animal sound)" << std::endl ;
+	this->_type = type;
 }
 
-Animal&	Animal::operator=( const Animal& animal )
+std::string Animal::getType(void) const
 {
-   	std::cout << "Animal: Assignation operator called" << std::endl;
-    this->_type = animal._type;
-    return (*this);
-}
-
-std::ostream&	operator<<( std::ostream& out, const Animal& animal )
-{
-	out << "Type: " << animal.getType();
-	return ( out );
-}
-
-std::ostream&	operator<<( std::ostream& out, const Animal* animal )
-{
-    if (animal != NULL)
-    	out << "Type: " << animal->getType();
-    return (out);
+	return this->_type;
 }

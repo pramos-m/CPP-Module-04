@@ -6,35 +6,52 @@
 /*   By: pramos-m <pramos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 09:47:21 by pramos-m          #+#    #+#             */
-/*   Updated: 2023/08/20 09:47:36 by pramos-m         ###   ########.fr       */
+/*   Updated: 2023/08/22 08:50:06 by pramos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"../inc/Dog.hpp"
 
-Dog::Dog( void ): Animal( "Dog" )
+Dog& Dog::operator=(const Dog &other)
 {
-	std::cout << "Dog: Default constructor called" << std::endl;
+	delete this->brain;
+	this->brain = new Brain(*other.brain);
+	std::cout << "Dog copy assignment operator called" << std::endl;
+	this->_type = other._type;
+	return *this;
 }
 
-Dog::Dog( const Dog& dog ): Animal( dog )
+Dog::Dog(const Dog &copy)
 {
-	std::cout << "Dog: Copy constructor called" << std::endl;
+	this->brain = copy.brain;
+	this->_type = copy._type;
+	std::cout << "Dog copy constructor called" << std::endl;
 }
 
-Dog::~Dog( void )
+Dog::Dog(void)
 {
-	std::cout << "Dog: Destructor called" << std::endl;
+	this->_type = "Dog";
+	this->brain = new Brain();
+	std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog&	Dog::operator=( const Dog& dog )
+Dog::~Dog(void)
 {
-	std::cout << "Dog: Assignation operator called" << std::endl;
-	this->_type = dog._type;
-	return ( *this );
+	delete this->brain;
+	std::cout << "Dog default destructor called" << std::endl;
 }
 
-void	Dog::makeSound( void ) const
+void Dog::makeSound(void) const
 {
-	std::cout << "Woof Woof" << std::endl;
+	std::cout << "Bup Bup" << std::endl;
+}
+
+void Dog::addIdea(std::string idea)
+{
+	this->brain->addIdea(idea);
+}
+
+std::string Dog::getIdea(int i) const
+{
+	return this->brain->getIdea(i);
 }

@@ -12,29 +12,31 @@
 
 #include	"../inc/Dog.hpp"
 
-Dog::Dog( void ): Animal( "Dog" )
+Dog& Dog::operator=(const Dog &other)
 {
-	std::cout << "Dog: Default constructor called" << std::endl;
+	std::cout << "Dog copy assignment operator called" << std::endl;
+	this->_type = other._type;
+	return *this;
 }
 
-Dog::Dog( const Dog& dog ): Animal( dog )
+Dog::Dog(const Dog &copy)
 {
-	std::cout << "Dog: Copy constructor called" << std::endl;
+	this->_type = copy._type;
+	std::cout << "Dog copy constructor called" << std::endl;
 }
 
-Dog::~Dog( void )
+Dog::Dog(void)
 {
-	std::cout << "Dog: Destructor called" << std::endl;
+	this->_type = "Dog";
+	std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog&	Dog::operator=( const Dog& dog )
+Dog::~Dog(void)
 {
-	std::cout << "Dog: Assignation operator called" << std::endl;
-	this->_type = dog._type;
-	return ( *this );
+	std::cout << "Dog default destructor called" << std::endl;
 }
 
-void	Dog::makeSound( void ) const
+void Dog::makeSound(void) const
 {
-	std::cout << "Woof Woof" << std::endl;
+	std::cout << "Bup Bup" << std::endl;
 }

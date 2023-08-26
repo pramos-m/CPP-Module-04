@@ -16,14 +16,16 @@
 
 # include	"Animal.hpp"
 
-class Cat: public Animal
+class Cat : public Animal
 {
-	public:
-		Cat( void );
-		Cat( const Cat& cat );
-		~Cat( void );
-		Cat&	operator=( const Cat& cat );
-		void	makeSound( void ) const;
+protected:
+
+public:
+	Cat(void);
+	Cat(const Cat &copy);
+	virtual ~Cat(void);
+	Cat& operator=(const Cat &other);
+	virtual void makeSound(void) const;
 };
 
 #endif

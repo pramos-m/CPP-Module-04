@@ -12,52 +12,39 @@
 
 #include	"../inc/WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal( void ): _type ("WrongAnimal")
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal &other)
+{
+	std::cout << "WrongAnimal: Copy assignment operator called" << std::endl;
+	this->_type = other._type;
+	return *this;
+}
+
+WrongAnimal::WrongAnimal(const WrongAnimal &copy): _type(copy._type)
+{
+	 std::cout << "WrongAnimal: Copy constructor called" << std::endl;
+}
+
+WrongAnimal::WrongAnimal(void) : _type("Non")
 {
 	std::cout << "WrongAnimal: Default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal( std::string type ): _type(type)
+WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "WrongAnimal: Type constructor called" << std::endl;
+	std::cout << "WrongAnimal: Default destructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal( const WrongAnimal& wrongAnimal ): _type(wrongAnimal._type)
+void WrongAnimal::makeSound(void) const
 {
-	std::cout << "WrongAnimal: Copy constructor called" << std::endl;
+	std::cout << "WrongAnimal: Default sound" << std::endl;
 }
 
-WrongAnimal::~WrongAnimal( void )
+void WrongAnimal::setType(std::string new_type)
 {
-	std::cout << "WrongAnimal: Destructor called" << std::endl;
+	this->_type = new_type;
 }
 
-std::string	WrongAnimal::getType( void ) const
+std::string WrongAnimal::getType(void) const
 {
-	return ( this->_type );
-}
-
-void	WrongAnimal::makeSound( void ) const
-{
-	std::cout << "(wrongAnimal sound)" << std::endl;
-}
-
-WrongAnimal&	WrongAnimal::operator=( const WrongAnimal& wrongAnimal )
-{
-   	std::cout << "WrongAnimal: Assignation operator called" << std::endl;
-    this->_type = wrongAnimal._type;
-    return (*this);
-}
-
-std::ostream&	operator<<( std::ostream& out, const WrongAnimal& wrongAnimal )
-{
-    out << "Type: " << wrongAnimal.getType();
-    return (out);
-}
-
-std::ostream&	operator<<( std::ostream& out, const WrongAnimal* wrongAnimal )
-{
-    if (wrongAnimal != NULL)
-        out << "Type: " << wrongAnimal->getType();
-    return (out);
+	return this->_type;
 }

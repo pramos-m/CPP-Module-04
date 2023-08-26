@@ -20,18 +20,15 @@
 class WrongAnimal
 {
 	protected:
-		std::string	_type;
+		std::string _type;
 	public:
-		WrongAnimal( void );
-		WrongAnimal( std::string type );
-		WrongAnimal( const WrongAnimal& wrongAnimal );
-		~WrongAnimal( void );
-		WrongAnimal&	operator=( const WrongAnimal& wrongAnimal );
-		std::string		getType( void ) const;
-		void			makeSound( void ) const;
+		WrongAnimal(void);
+		WrongAnimal(const WrongAnimal &copy);
+		virtual ~WrongAnimal(void);
+		WrongAnimal& operator=(const WrongAnimal &other);
+		void makeSound(void) const;
+		void setType(std::string newtype);
+		std::string getType(void) const;
 };
-
-std::ostream&	operator<<( std::ostream& out, const WrongAnimal& wrongAnimal );
-std::ostream&	operator<<( std::ostream& out, const WrongAnimal* wrongAnimal );
 
 #endif
