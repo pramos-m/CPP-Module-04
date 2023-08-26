@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pramos-m <pramos-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/20 09:42:36 by pramos-m          #+#    #+#              #
-#    Updated: 2023/08/20 09:42:52 by pramos-m         ###   ########.fr        #
+#    Created: 2023/08/20 09:42:24 by pramos-m          #+#    #+#              #
+#    Updated: 2023/08/20 09:42:29 by pramos-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Abstract
+NAME = Fire
 SRC_DIR = src
 INC_DIR = inc
 
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Brain.cpp $(SRC_DIR)/Animal.cpp $(SRC_DIR)/Cat.cpp $(SRC_DIR)/Dog.cpp $(SRC_DIR)/WrongAnimal.cpp $(SRC_DIR)/WrongCat.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/AAnimal.cpp $(SRC_DIR)/Cat.cpp $(SRC_DIR)/Dog.cpp $(SRC_DIR)/WrongAnimal.cpp $(SRC_DIR)/WrongCat.cpp $(SRC_DIR)/Brain.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = g++
 RM = rm -f
